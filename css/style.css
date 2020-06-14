@@ -1,0 +1,377 @@
+@charset "utf-8";
+
+img {
+  width:100%;
+  display: block;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+li {
+  list-style: none;
+}
+
+/* -----ここから下に記述してください----- */
+.content {
+  font-family: 'Gulim';
+  position: relative;
+  display: flex;
+}
+.sidebar {
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding-top: 30px;
+}
+.site-name a{
+  font-size: 40px;
+  font-family: 'EB Garamond';
+  color: black;
+  font-weight: bold;
+}
+.logo {
+  margin: 10px auto;
+  width: 34px;
+}
+.sns-link {
+  position: absolute;
+  left:50%;
+  bottom: 9%;
+  transform: translateX(-50%);
+  display: flex;
+
+}
+
+.sns-link img{
+  display: inline-block;
+  width: 25px;
+}
+.sns-link a:nth-child(2) {
+  margin: 0 10px;
+}
+.nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.nav li {
+  padding-top: 26px;
+}
+.nav li a {
+  color:black;
+  font-size: 18px;
+}
+.main {
+  width: 100%;
+  height: 100vh;
+  margin-left: 20%;
+}
+.sp-on {
+  position: absolute;
+  color: white;
+  cursor: pointer;
+  display: none;
+  font-size: 30px;
+}
+div[data-slide="prev"] {
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+div[data-slide="next"] {
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.thumbnail {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+.thumbnail li {
+  height: 50vh;
+  width: calc(100% / 4);
+  position: relative;
+  overflow: hidden;
+
+}
+
+.thumbnail li .is-active::after,
+.thumbnail li a::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: .5;
+  z-index: 1;
+  transition: all 1s
+}
+.thumbnail li .is-active::after,
+.thumbnail li:hover a::after{
+  opacity: 0;
+}
+.thumbnail li img{
+  height: 100%;
+  object-fit: cover;
+  transform:scale(1,1);
+  transition: all 1s;
+  backface-visibility: hidden;
+}
+.thumbnail li .is-active img,
+.thumbnail li:hover img {
+  transform:scale(1.2,1.2);
+}
+.place {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 30px 0 30px 30px;
+}
+.place-img {
+  width: 45%;
+  height: 100%;
+}
+.place-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.place-info {
+  width: calc(100% - 45%);
+  padding:  0 7% 3% 7%;
+  font-family: 'YuMincho';
+}
+.place-name {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.place-name span {
+  border-bottom: 2px solid #d52f25;
+  padding-bottom: 10px;
+}
+.place-item {
+  max-height: 60vh;
+  overflow: scroll;
+}
+.place-item dt {
+  font-size: 26px;
+  font-weight: bold;
+  border-left: 3px solid black;
+  padding-left: 18px;
+  margin-top: 30px;
+}
+.place-item dd {
+  margin-top: 20px;
+  line-height: 38px;
+  font-size: 20px;
+}
+.btn-wrap {
+  text-align: center;
+  margin-top: 30px;
+}
+.btn {
+  display: inline-block;
+  position: relative;
+  padding: 15px 0;
+  width: 300px;
+  background-color: #de4d4d;
+  color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  font-size: 20px;
+  z-index: 10;
+}
+
+.btn + .btn {
+  margin: 10px 0;
+}
+.btn::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  content: '';
+  background-color: #d52f25;
+  transform-origin: right top;
+  transform: scale(0, 1);
+  transition: transform .5s;
+}
+.btn:hover::before {
+  transform-origin: left top;
+  transform: scale(1, 1);
+  z-index: -1;
+}
+.btn-arrow::after {
+  position: absolute;
+  content: '';
+  top:50%;
+  right: 7%;
+  width: 8px;
+  height: 8px;
+  border-top: solid 2px white;
+  border-right: solid 2px white;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin-top: -4px;
+  z-index: 5;
+  transition: all .4s ;
+}
+.btn-arrow:hover::after {
+  right: 3%;
+
+}
+@media (max-width:768px){
+  .sidebar {
+    width: 100%;
+    z-index: 10;
+  }
+
+  .main {
+    margin-left: 0;
+    width: auto;
+		height: auto;
+    overflow: hidden;
+  }
+
+  .nav li {
+    height: 100%;
+    width: 100%;
+  }
+  .nav li a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    opacity: 0;
+    z-index: -5;
+  }
+
+  .nav li a.is-active {
+    opacity: 1;
+    z-index: 5;
+  }
+  .thumbnail {
+    display: flex;
+    width: max-content;
+  }
+  .thumbnail li {
+    height: 100vh;
+    width: 100vw;
+
+  }
+  #page-index .nav li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 2px;
+    width: 0%;
+    background-color: #de4d4d;
+    display: block;
+    transition: all 1s ;
+  }
+  #page-index .nav li a.is-active::after{
+    width: 100%;
+  }
+  #page-index .site-name a{
+    color: white;
+  }
+
+  div[data-slide="next"] {
+    display: block;
+  }
+  #page-place .sidebar {
+    height: 45px;
+    background-color: white;
+  }
+  #page-place .main {
+    width: auto;
+    height: auto;
+
+  }
+  #page-place .site-name a{
+    position: absolute;
+    top: 9px;
+    left:10px;
+    font-size: 23px;
+  }
+  #page-place .logo {
+    position: absolute;
+    top: 27%;
+    left: 110px;
+    transform: translate(0,-50%);
+  }
+  #page-place .sns-link {}
+
+  #page-place .sns-link {
+    position: absolute;
+    left :calc(100% - 10px);
+    bottom: 40%;
+    transform: translate(-100%,50%);
+  }
+  #page-place .nav {
+    top:45px;
+    left: 0;
+    height: 45px;
+    width: 100%;
+    transform: translateX(0);
+    background-color: #f3f3f3;
+    display: flex;
+    justify-content: space-between;
+    overflow: scroll;
+    box-shadow: 1px 1px 2px #ccc inset;
+  }
+  #page-place .nav li {
+    display: block;
+    padding: 0
+  }
+  #page-place .nav li a {
+    position: relative;
+    top: 15px;
+    left: 0;
+    color: black;
+    opacity: 1;
+    padding: 0 10px;
+    font-size: 15px;
+    z-index: 5;
+    white-space: nowrap;
+  }
+  .place {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+  .place-img {
+    width: auto;
+    height: 380px;
+  }
+
+  .place-info {
+    width: 100%;
+    padding:  10% 7% 3% 7%;
+  }
+  .place-name {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+
+}
